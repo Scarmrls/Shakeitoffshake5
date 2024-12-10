@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para el carrusel */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background: rgb(218, 15, 157);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+
+        .carousel-buttons button:hover {
+            background: rgba(207, 73, 174, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nosotros</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="mision.html">Misión</a></li>
+                <li><a href="vision.html">Visión</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>¿Quiénes somos?</h2>
+        <p>En shake it off shake somos una empresa que utiliza ingredientes frescos y naturales.</p>
+
+        <!-- Carrusel de imágenes -->
+        <div class="carousel">
+            <img src="imagen1.png" alt="Imagen 1" class="active">
+            <img src="imagen2.jpeg" alt="Imagen 2">
+            <img src="imagen3.jpg" alt="Imagen 3">
+            <div class="carousel-buttons">
+                <button id="prev">❮</button>
+                <button id="next">❯</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Shake it off shake, todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Script para el carrusel
+        const images = document.querySelectorAll('.carousel img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>
+
